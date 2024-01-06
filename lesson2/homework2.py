@@ -32,7 +32,7 @@ print(result_after_strip)
 
 radius = 5
 form_for_circumference = 2 * math.pi * radius
-form_for_area = math.pi * radius ** 2
+form_for_area = math.pi * radius**2
 
 print(form_for_circumference)
 print(form_for_area)
