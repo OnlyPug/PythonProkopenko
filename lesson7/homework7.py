@@ -9,7 +9,7 @@ print(x)
 
 """Напишіть програму на Python, щоб перевірити, чи є заданий рядок числом, за допомогою лямбда"""
 
-hate_lamdba = lambda x: x.replace('.', '', 1).isdigit() or x.startswith('-') and x.replace('-', '', 1).isdigit() and x.count('.') == 1
+hate_lamdba = lambda x: x.replace('.', '', 1).isdigit() or x.startswith('-') and x.replace('-', '', 1).isdigit() and x.count('.') <= 1
 
 result = hate_lamdba(input('Please input numbers:  '))
 
