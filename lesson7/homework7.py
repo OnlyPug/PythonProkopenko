@@ -9,11 +9,11 @@ print(x)
 
 """Напишіть програму на Python, щоб перевірити, чи є заданий рядок числом, за допомогою лямбда"""
 
-hate_lamdba = lambda x: x.isdigit() or x.find('.')
+hate_lamdba = lambda x: x.replace('.', '', 1).isdigit() or x.startswith('-') and x.replace('-', '', 1).isdigit() and x.count('.') == 1
 
 result = hate_lamdba(input('Please input numbers:  '))
 
-if result == True:
+if result:
     print('In your string I see numbers')
 else:
     print("-______- In your string I don't see numbers")
