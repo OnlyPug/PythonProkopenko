@@ -30,12 +30,6 @@ def how_old_are_you(date):
     date_format = date.strftime(time_format)
     return date_live, date_timestamp, date_format
 
-    print(f'Ого, ти вже на цьому світі: {date_live}')
-    print(f'Datetime.timestamp прожитого життя: {date_timestamp}')
-    timeformat = '%y-%d-%m, %I:%M:%S %p'
-    date_format = date.strftime(timeformat)
-    print(f'Час за форматом: {date_format}')
-
 
 user_date = dt.datetime(1997, 8, 29, 5, 24)
 print(how_old_are_you(user_date))
