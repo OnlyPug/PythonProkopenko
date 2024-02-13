@@ -76,7 +76,11 @@ def sum_subtraction_days_task3():
         return None
     sign_str = input("Введіть + або - для додавання чи віднімання: ")
     if sign_str not in ('+', '-'):
-        print("Неправильний знак для коригування днів.")
+        print("Ну + чи - і все!!! Тепер все заново запускай")
+    if sign_str == '+':
+        return user_date + dt.timedelta(days=days)
+    else:
+        return user_date - dt.timedelta(days=days)
 
 
 print(sum_subtraction_days_task3())
