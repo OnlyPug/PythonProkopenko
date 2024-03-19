@@ -3,3 +3,4 @@ from .locators.header_locators import HeaderLocators
 from .locators.product_locators import ProductLocators
 from .locators.main_locators import MainPageLocators
 from .locators.basket_locators import BasketLocators
+from .locators.comics_book_locators import ComicsBookLocators

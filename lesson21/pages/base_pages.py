@@ -1,4 +1,5 @@
 from selenium.webdriver import ActionChains
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -48,3 +49,23 @@ class BasePage:
         element = self.find_element(locator=locator)
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
+
+    def click_back(self):
+        self.driver.back()
+
+    # COOKIES
+
+    def get_cookies(self):
+        cookies = self.driver.get_cookies()
+        return print(f'Cookies: {cookies}')
+
+    def add_cookies(self, cookie_dict):
+        self.driver.add_cookie(cookie_dict)
+
+    # LOCAL STORAGE
+
+    def add_local_storage(self, name, value):
+        self.driver.execute_script(f'window.localStorage["{name}"]="{value}"')
+
+    def is_element_clicable(self, locator: tuple[str]):
+        self.driver.find_element(locator=locator)
