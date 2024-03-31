@@ -1,3 +1,5 @@
+import random
+
 import requests
 import json
 from .json_information import JsonInformation
@@ -73,3 +75,43 @@ class Phone:
         response_of_single_created_object = self.create_new_object()
         obj_id = response_of_single_created_object.json()["id"]
         return requests.delete(f'{self.base_url}/{obj_id}'), obj_id
+
+
+film_name = ['Opengamer', 'Shrek', 'Tetris', 'PoorThings', 'Duna']
+
+genre = ['Biographic', 'Comedian', 'History', 'Drama', 'Action']
+
+rating = [9, 10, 7, 9, 10]
+
+
+class Films:
+    base_url = 'https://api.restful-api.dev/objects'
+
+    def __init__(self):
+        self.headers = {'Content-Type': 'application/json'}
+        self.film_data = {'name': random.choice(film_name),
+                          'data': {
+                              'genre': random.choice(genre),
+                              'rating': random.choice(rating)
+                          }}
+        self.films_response = requests.post(url=self.base_url, headers=self.headers, data=json.dumps(self.film_data))
+        self._id = self.films_response.json()["id"]
+        self._created_time = self.films_response.json()["createdAt"]
+
+    @classmethod
+    def generate_films_pack(cls):
+        list_of_films = []
+        for i in range(random.randint(4,20)):
+            list_of_films.append(cls())
+        return list_of_films
+
+    @classmethod
+    def filter_only_films(cls, list_of_films):
+        filtration_url = cls.base_url + '?'
+        for film in list_of_films:
+            if film != list_of_films[-1]:
+                filtration_url += f"id={film._id}&"
+            else:
+                filtration_url += f"id={film._id}"
+        print(filtration_url)
+        return requests.get(filtration_url)
